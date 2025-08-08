@@ -231,9 +231,9 @@ This project directly supports **SDG Goal 16: Peace, Justice, and Strong Institu
 ## 👥 Development Team
 
 - **Yash Sakariya** - Team Lead
+- **Arpit Patoliya** - Team Member
 - **Madhavi Parmar** - Team Member
 - **Hill Soni** - Team Member
-- **Arpit Patoliya** - Team Member
 - **Arya Patel** - Team Member
 
 ## 📞 Contact
@@ -263,5 +263,6 @@ For detailed project documentation, see [JusticeAI_Project_Documentation.md](Jus
 This platform provides informational guidance only and does not constitute legal advice. Please consult with qualified legal professionals for formal legal counsel.
 
 ---
+
 
 **Built with ❤️ for SDG Goal 16: Peace, Justice, and Strong Institutions** 
