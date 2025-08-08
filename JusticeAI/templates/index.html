@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JusticeAI - Multi-Agent Legal Assistance Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-balance-scale"></i>
+                    <h1>JusticeAI</h1>
+                </div>
+                <div class="header-subtitle">
+                    <p>Multi-Agent Legal Assistance Platform</p>
+                    <span class="sdg-badge">SDG Goal 16: Peace, Justice & Strong Institutions</span>
+                </div>
+                <nav class="nav-links">
+                    <a href="https://www.ibm.com/in-en" target="_blank" class="nav-link ibm-link" title="Visit IBM India">
+                        <i class="fas fa-building"></i>
+                        <span>IBM</span>
+                    </a>
+                    <a href="https://csrbox.org/home/" target="_blank" class="nav-link csrbox-link" title="Visit CSRBOX">
+                        <i class="fas fa-handshake"></i>
+                        <span>CSRBOX</span>
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h2>Welcome to JusticeAI</h2>
+                    <p>Your intelligent legal assistance platform powered by multi-agent systems and AI technology.</p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-robot"></i>
+                            <h3>AI Legal Expert</h3>
+                            <p>Get intelligent legal advice and guidance</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-handshake"></i>
+                            <h3>Mediation Support</h3>
+                            <p>Peaceful conflict resolution strategies</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-file-pdf"></i>
+                            <h3>PDF Reports</h3>
+                            <p>Professional case documentation</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <h3>Escalation System</h3>
+                            <p>Critical case identification and routing</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Case Submission Form -->
+            <section class="form-section" id="caseForm">
+                <div class="form-container">
+                    <h2>Report Your Legal Issue</h2>
+                    <p>Please provide details about your legal concern. Our multi-agent system will analyze your case and provide comprehensive guidance.</p>
+                    
+                    <form id="legalIssueForm" class="legal-form">
+                        <div class="form-group">
+                            <label for="user_name">Full Name *</label>
+                            <input type="text" id="user_name" name="user_name" required placeholder="Enter your full name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="user_email">Email Address</label>
+                            <input type="email" id="user_email" name="user_email" placeholder="Enter your email address">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="issue_category">Issue Category *</label>
+                            <select id="issue_category" name="issue_category" required>
+                                <option value="">Select an issue category</option>
+                                <option value="property_dispute">Property & Rental Disputes</option>
+                                <option value="employment_labor">Employment & Labor Issues</option>
+                                <option value="family_law">Family Law & Domestic Issues</option>
+                                <option value="consumer_rights">Consumer Rights & Protection</option>
+                                <option value="criminal_law">Criminal Law Matters</option>
+                                <option value="civil_dispute">Civil Disputes & Contracts</option>
+                                <option value="financial_debt">Financial & Debt Issues</option>
+                                <option value="other">Other Legal Matters</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="priority_level">Priority Level *</label>
+                            <select id="priority_level" name="priority_level" required>
+                                <option value="">Select priority level</option>
+                                <option value="low">Low - General inquiry or information</option>
+                                <option value="medium">Medium - Standard legal issue</option>
+                                <option value="high">High - Urgent matter requiring attention</option>
+                                <option value="urgent">Urgent - Critical situation requiring immediate action</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="issue_description">Issue Description *</label>
+                            <textarea id="issue_description" name="issue_description" rows="6" required 
+                                placeholder="Please describe your legal issue in detail. Include relevant facts, dates, and any actions you've already taken."></textarea>
+                            <div class="char-counter">
+                                <span id="charCount">0</span> / 2000 characters
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary" id="submitBtn">
+                                <i class="fas fa-paper-plane"></i>
+                                Submit Case
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="resetBtn">
+                                <i class="fas fa-undo"></i>
+                                Reset Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Loading Section -->
+            <section class="loading-section" id="loadingSection" style="display: none;">
+                <div class="loading-container">
+                    <div class="loading-spinner">
+                        <i class="fas fa-cog fa-spin"></i>
+                    </div>
+                    <h3>Processing Your Case</h3>
+                    <p>Our multi-agent system is analyzing your legal issue...</p>
+                    <div class="agent-status">
+                        <div class="agent-item">
+                            <i class="fas fa-user"></i>
+                            <span>User Agent</span>
+                            <div class="status-indicator" id="userAgentStatus">Processing...</div>
+                        </div>
+                        <div class="agent-item">
+                            <i class="fas fa-gavel"></i>
+                            <span>Legal Expert Agent</span>
+                            <div class="status-indicator" id="legalAgentStatus">Waiting...</div>
+                        </div>
+                        <div class="agent-item">
+                            <i class="fas fa-handshake"></i>
+                            <span>Mediation Agent</span>
+                            <div class="status-indicator" id="mediationAgentStatus">Waiting...</div>
+                        </div>
+                        <div class="agent-item">
+                            <i class="fas fa-file-alt"></i>
+                            <span>Report Agent</span>
+                            <div class="status-indicator" id="reportAgentStatus">Waiting...</div>
+                        </div>
+                        <div class="agent-item">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Escalation Agent</span>
+                            <div class="status-indicator" id="escalationAgentStatus">Waiting...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section" id="resultsSection" style="display: none;">
+                <div class="results-container">
+                    <div class="results-header">
+                        <h2>Case Analysis Complete</h2>
+                        <p>Your case has been processed by our multi-agent system. Here are the comprehensive recommendations:</p>
+                    </div>
+
+                    <div class="case-info">
+                        <h3>Case Information</h3>
+                        <div class="case-details" id="caseDetails">
+                            <!-- Case details will be populated here -->
+                        </div>
+                    </div>
+
+                    <div class="agent-results">
+                        <div class="result-card legal-advice">
+                            <div class="card-header">
+                                <i class="fas fa-gavel"></i>
+                                <h3>Legal Expert Analysis</h3>
+                            </div>
+                            <div class="card-content" id="legalAdviceContent">
+                                <!-- Legal advice will be populated here -->
+                            </div>
+                        </div>
+
+                        <div class="result-card mediation-suggestions">
+                            <div class="card-header">
+                                <i class="fas fa-handshake"></i>
+                                <h3>Mediation Recommendations</h3>
+                            </div>
+                            <div class="card-content" id="mediationContent">
+                                <!-- Mediation suggestions will be populated here -->
+                            </div>
+                        </div>
+
+                        <div class="result-card escalation-assessment">
+                            <div class="card-header">
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <h3>Escalation Assessment</h3>
+                            </div>
+                            <div class="card-content" id="escalationContent">
+                                <!-- Escalation recommendations will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="downloadReportBtn">
+                            <i class="fas fa-download"></i>
+                            Download PDF Report
+                        </button>
+                        <button class="btn btn-secondary" id="newCaseBtn">
+                            <i class="fas fa-plus"></i>
+                            Submit New Case
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section class="error-section" id="errorSection" style="display: none;">
+                <div class="error-container">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <h3>Error Processing Case</h3>
+                    <p id="errorMessage">An error occurred while processing your case. Please try again.</p>
+                    <button class="btn btn-primary" onclick="showForm()">
+                        <i class="fas fa-undo"></i>
+                        Try Again
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>JusticeAI</h4>
+                    <p>Empowering citizens with intelligent legal assistance through multi-agent systems and AI technology.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" onclick="showForm()">Submit Case</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#terms">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>For technical support or questions:</p>
+                    <p>Email: sakariyayash04@gmail.com</p>
+                </div>
+            </div>
+            
+            <!-- Team Members Section -->
+            <div class="team-section">
+                <h4>Development Team</h4>
+                <div class="team-members">
+                    <div class="team-member">
+                        <strong>Yash Sakariya</strong> - Team Lead
+                    </div>
+                    <div class="team-member">
+                        <strong>Madhavi Parmar</strong> - Team Member
+                    </div>
+                    <div class="team-member">
+                        <strong>Hill Soni</strong> - Team Member
+                    </div>
+                    <div class="team-member">
+                        <strong>Arpit Patoliya</strong> - Team Member
+                    </div>
+                    <div class="team-member">
+                        <strong>Arya Patel</strong> - Team Member
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 JusticeAI. Built with ❤️ for SDG Goal 16: Peace, Justice, and Strong Institutions.</p>
+                <p class="disclaimer">This platform provides informational guidance only and does not constitute legal advice. Please consult with qualified legal professionals for formal legal counsel.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

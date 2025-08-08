@@ -1,0 +1,23 @@
+<svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="stripes" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="1" fill="#000"/>
+      <rect y="1" width="4" height="1" fill="transparent"/>
+      <rect y="2" width="4" height="1" fill="#000"/>
+      <rect y="3" width="4" height="1" fill="transparent"/>
+    </pattern>
+  </defs>
+  
+  <!-- I -->
+  <rect x="5" y="10" width="8" height="20" fill="url(#stripes)"/>
+  
+  <!-- B -->
+  <rect x="20" y="10" width="6" height="20" fill="url(#stripes)"/>
+  <rect x="26" y="10" width="8" height="6" fill="url(#stripes)"/>
+  <rect x="26" y="24" width="8" height="6" fill="url(#stripes)"/>
+  
+  <!-- M -->
+  <rect x="40" y="10" width="6" height="20" fill="url(#stripes)"/>
+  <rect x="46" y="10" width="6" height="20" fill="url(#stripes)"/>
+  <rect x="52" y="10" width="6" height="20" fill="url(#stripes)"/>
+</svg>

@@ -1,0 +1,28 @@
+<svg width="140" height="50" viewBox="0 0 140 50" xmlns="http://www.w3.org/2000/svg">
+  <!-- Two overlapping rounded squares -->
+  <rect x="5" y="15" width="20" height="20" rx="3" fill="none" stroke="#0066CC" stroke-width="2"/>
+  <rect x="12" y="8" width="20" height="20" rx="3" fill="none" stroke="#00CC66" stroke-width="2"/>
+  
+  <!-- CSR in blue -->
+  <text x="40" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#0066CC">CSR</text>
+  
+  <!-- B in green -->
+  <text x="70" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#00CC66">B</text>
+  
+  <!-- O as circle with segments -->
+  <circle cx="85" cy="20" r="8" fill="none" stroke="#00CC66" stroke-width="2"/>
+  <circle cx="85" cy="20" r="4" fill="white"/>
+  <path d="M 85 12 A 8 8 0 0 1 93 20" fill="#0066CC"/>
+  <path d="M 93 20 A 8 8 0 0 1 85 28" fill="#0099CC"/>
+  <path d="M 85 28 A 8 8 0 0 1 77 20" fill="#00CCCC"/>
+  <path d="M 77 20 A 8 8 0 0 1 85 12" fill="white"/>
+  
+  <!-- X in green -->
+  <text x="100" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#00CC66">X</text>
+  
+  <!-- Registered trademark symbol -->
+  <text x="105" y="15" font-family="Arial, sans-serif" font-size="8" fill="#000">®</text>
+  
+  <!-- Tagline -->
+  <text x="40" y="40" font-family="Arial, sans-serif" font-size="10" fill="#666">Doing Good in a Better Way</text>
+</svg>
